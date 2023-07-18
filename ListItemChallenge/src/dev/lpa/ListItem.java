@@ -17,15 +17,17 @@ public abstract class ListItem {
         System.out.println("Hello world!");
     }
 
-    protected abstract void next();
+    protected abstract ListItem next();
 
-    protected abstract void setNext();
+    protected abstract ListItem setNext(ListItem item);
 
-    protected abstract void previous();
+    protected abstract ListItem previous();
 
-    protected abstract void setPrevious();
+    protected abstract ListItem setPrevious(ListItem item);
 
-    protected abstract void compareTo();
+//    protected abstract ListItem compareTo();
+
+    protected abstract int compareTo(ListItem item);
 
     public Object getValue() {
         return value;
@@ -34,6 +36,5 @@ public abstract class ListItem {
     public void setValue(Object value) {
         this.value = value;
     }
-
 
 }
