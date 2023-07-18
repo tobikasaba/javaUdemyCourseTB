@@ -1,2 +1,5 @@
-package dev.lpa.dev.lpa;public class MyLinkedList {
+package dev.lpa;
+
+
+public class MyLinkedList {
 }

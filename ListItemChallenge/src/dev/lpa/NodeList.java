@@ -1,2 +1,4 @@
-package dev.lpa;public interface NodeList {
+package dev.lpa;
+
+public interface NodeList {
 }
