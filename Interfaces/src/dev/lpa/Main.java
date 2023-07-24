@@ -1,0 +1,19 @@
+package dev.lpa;
+
+
+public class Main {
+    public static void main(String[] args) {
+        Bird bird = new Bird();
+
+        /**
+         * assigning the bird object to different reference types
+         */
+        Animal animal = bird;
+        FlightEnabled flier = bird;
+        Trackable tracked = bird;
+
+        animal.move();
+//        flier.move();
+//        tracked.move();
+    }
+}
