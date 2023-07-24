@@ -15,12 +15,14 @@ interface FlightEnabled {
     void fly();
 }
 
-interface Trackable{
+interface Trackable {
 
     void track();
 
+}
 
-public abstract class  Animal {
+public abstract class Animal {
 
     public abstract void move();
+
 }
