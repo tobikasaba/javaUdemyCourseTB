@@ -1,12 +1,6 @@
 package dev.lpa;
 
-public class Bird extends Animal implements FlightEnabled, Trackable{
-
-
-    @Override
-    public void move() {
-        System.out.println("Flaps Wings");
-    }
+public class Jet implements FlightEnabled, Trackable{
 
     @Override
     public void takeOff() {
@@ -20,11 +14,11 @@ public class Bird extends Animal implements FlightEnabled, Trackable{
 
     @Override
     public void fly() {
-        System.out.println(this.getClass().getSimpleName() + " is flying");
+        System.out.println(this.getClass().getSimpleName() + "'s coordinate recorded'");
     }
 
     @Override
     public void track() {
-        System.out.println(this.getClass().getSimpleName() + "'s coordinate recorded'");
+        System.out.println(this.getClass().getSimpleName() + " i am testing track");
     }
 }
