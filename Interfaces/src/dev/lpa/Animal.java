@@ -1,4 +1,5 @@
 package dev.lpa;
+
 interface OrbitEarth extends FlightEnabled {
     void achieveOrbit();
 }
@@ -16,6 +17,15 @@ interface FlightEnabled {
     void takeOff();
     void land();
     void fly();
+
+    //    abstract  method
+    default FlightStages transition(FlightStages stage) {
+//        System.out.println("transition not implemented on " + getClass().getName());
+//        return null;
+        FlightStages nextStage = stage.getNextStage();
+        System.out.println("Transitioning from " + stage + " to " + nextStage);
+        return nextStage;
+    }
 }
 interface Trackable {
     void track();
@@ -27,6 +37,11 @@ enum FlightStages implements Trackable {GROUNDED, LAUNCH, CRUISE, DATA_COLLECTIO
         if(this!= GROUNDED){
             System.out.println("Monitoring " + this);
         }
+    }
+
+    public FlightStages getNextStage(){
+        FlightStages[] allStages = values();
+        return allStages[(ordinal() + 1) % allStages.length];
     }
 }
 /**
@@ -66,6 +81,8 @@ class Satellite implements OrbitEarth {
     @Override
     public void fly() {
     }
+
+
 }
 
 public abstract class Animal {
