@@ -8,9 +8,9 @@ interface OrbitEarth extends FlightEnabled {
 
         var today = new java.util.Date();
         System.out.println(today + ": " + description);
-
     }
-/*private method can only be used from either another private method or a default method*/
+
+    /*private method can only be used from either another private method or a default method*/
     private void logStage(FlightStages stage, String description) {
         description = stage + ": " + description;
         log(description);
@@ -84,26 +84,38 @@ record DragonFly(String name, String type) implements FlightEnabled {
     }
 }
 class Satellite implements OrbitEarth {
+    FlightStages stage = FlightStages.GROUNDED;
 
     public void achieveOrbit() {
-        System.out.println("Orbit achieved");
+       transition("Orbit achieved");
     }
 
     @Override
     public void takeOff() {
+        transition("Taking Off");
     }
 
     @Override
     public void land() {
+        transition("Landing");
     }
 
     @Override
     public void fly() {
+
+        achieveOrbit();
+        transition("Data Collection while Orbiting");
     }
 
     @Override
     public String toString() {
         return "Class " + this.getClass().getSimpleName();
+    }
+
+    public void transition(String description) {
+        System.out.println(description);
+        stage = transition(stage);
+        stage.track();
     }
 }
 
