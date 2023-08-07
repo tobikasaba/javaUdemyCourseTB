@@ -2,6 +2,26 @@ package dev.lpa;
 
 interface OrbitEarth extends FlightEnabled {
     void achieveOrbit();
+
+    /*making a method private static in an interface means it can only be used by concrete methods in the interface*/
+    private static void log(String description) {
+
+        var today = new java.util.Date();
+        System.out.println(today + ": " + description);
+
+    }
+/*private method can only be used from either another private method or a default method*/
+    private void logStage(FlightStages stage, String description) {
+        description = stage + ": " + description;
+        log(description);
+    }
+
+    @Override
+    default FlightStages transition(FlightStages stage) {
+        FlightStages nextStage = FlightEnabled.super.transition(stage);
+        logStage(stage, " Beginning Transition to "+ nextStage);
+        return nextStage;
+    }
 }
 interface FlightEnabled {
     /*any fields declared on an interface are not instance fields, they are explicitly constant, public, final and static*/
@@ -13,7 +33,6 @@ interface FlightEnabled {
      * abstract modifier is implicitly declared for all interfaces, has this doesn't have to be declared
      * any method declared without a body is implicitly declared abstract
      */
-
     void takeOff();
     void land();
     void fly();
@@ -82,7 +101,10 @@ class Satellite implements OrbitEarth {
     public void fly() {
     }
 
-
+    @Override
+    public String toString() {
+        return "Class " + this.getClass().getSimpleName();
+    }
 }
 
 public abstract class Animal {
