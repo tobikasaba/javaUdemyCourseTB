@@ -1,6 +1,6 @@
 package dev.lpa;
 
-public class Jet implements FlightEnabled, Trackable{
+public class Jet implements FlightEnabled, Trackable {
 
     @Override
     public void takeOff() {

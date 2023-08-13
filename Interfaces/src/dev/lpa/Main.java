@@ -37,8 +37,8 @@ public class Main {
 
 
         /*when working with interfaces, it's recommended to use the interface type for the declared
-        * variable
-        * So while ArrayList is does compile, it's not best practice because ArrayList uses the List interface*/
+         * variable
+         * So while ArrayList is does compile, it's not best practice because ArrayList uses the List interface*/
         LinkedList<FlightEnabled> fliers = new LinkedList<>();
         fliers.add(bird);
 

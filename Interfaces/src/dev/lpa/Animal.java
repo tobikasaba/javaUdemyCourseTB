@@ -19,13 +19,13 @@ interface OrbitEarth extends FlightEnabled {
     @Override
     default FlightStages transition(FlightStages stage) {
         FlightStages nextStage = FlightEnabled.super.transition(stage);
-        logStage(stage, " Beginning Transition to "+ nextStage);
+        logStage(stage, " Beginning Transition to " + nextStage);
         return nextStage;
     }
 }
+
 interface FlightEnabled {
-    /*any fields declared on an interface are not instance fields, they are explicitly constant, public, final and static*/
-    double MILES_TO_KM = 1.60934;
+    /*any fields declared on an interface are not instance fields, they are explicitly constant, public, final and static*/ double MILES_TO_KM = 1.60934;
 
     double KM_TO_MILES = 0.621371;
 
@@ -34,7 +34,9 @@ interface FlightEnabled {
      * any method declared without a body is implicitly declared abstract
      */
     void takeOff();
+
     void land();
+
     void fly();
 
     //    abstract  method
@@ -46,26 +48,31 @@ interface FlightEnabled {
         return nextStage;
     }
 }
+
 interface Trackable {
     void track();
 }
-enum FlightStages implements Trackable {GROUNDED, LAUNCH, CRUISE, DATA_COLLECTION;
+
+enum FlightStages implements Trackable {
+    GROUNDED, LAUNCH, CRUISE, DATA_COLLECTION;
 
     @Override
     public void track() {
-        if(this!= GROUNDED){
+        if (this != GROUNDED) {
             System.out.println("Monitoring " + this);
         }
     }
 
-    public FlightStages getNextStage(){
+    public FlightStages getNextStage() {
         FlightStages[] allStages = values();
         return allStages[(ordinal() + 1) % allStages.length];
     }
 }
+
 /**
  * Normally, records don't have a body but because this record implements the FlightEnabled interface,
- * it has to override the abstract methods in the interface*/
+ * it has to override the abstract methods in the interface
+ */
 record DragonFly(String name, String type) implements FlightEnabled {
 
     @Override
@@ -83,11 +90,12 @@ record DragonFly(String name, String type) implements FlightEnabled {
 
     }
 }
+
 class Satellite implements OrbitEarth {
     FlightStages stage = FlightStages.GROUNDED;
 
     public void achieveOrbit() {
-       transition("Orbit achieved");
+        transition("Orbit achieved");
     }
 
     @Override
