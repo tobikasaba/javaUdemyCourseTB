@@ -21,10 +21,5 @@ public class Main {
         for (var m : mappables) {
             Mappable.mapIt(m);
         }
-
     }
-
-
-
-
 }

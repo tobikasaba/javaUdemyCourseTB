@@ -1,6 +1,5 @@
 package dev.lpa;
 
-
 import java.awt.*;
 
 enum UsageType {ENTERTAINMENT, GOVERNMENT, RESIDENTIAL, SPORTS}
@@ -14,7 +13,6 @@ public class Building implements Mappable {
         this.name = name;
         this.usage = usage;
     }
-
 
     @Override
     public String getLabel() {
