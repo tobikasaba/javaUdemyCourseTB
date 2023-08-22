@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player implements ISaveable {
-
     private String name;
     private String weapon;
     private int hitPoints;
     private int strength;
 
-    List<String> storageList = new ArrayList<>();
+
     public Player(String name, String weapon, int hitPoints, int strength) {
         this.name = name;
         this.weapon = weapon;
@@ -52,21 +51,31 @@ public class Player implements ISaveable {
 
     @Override
     public List<String> write() {
-        return null;
+        List<String> value = new ArrayList<>();
+//        value.add(0, this.name);
+//        value.add(1, "" + this.hitPoints);
+//        value.add(2, "" + this.strength);
+        value.add(0, name);
+        value.add(1, String.valueOf(hitPoints));
+        value.add(2, String.valueOf(strength));
+        value.add(3, weapon);
+        return value;
     }
 
     @Override
-    public void read(List<String> storageList) {
-        if (storageList.size()>0 && storageList!=null){
-            storageList.add(toString());
+    public void read(List<String> values) {
+        if (values.size() > 0 && values != null) {
+            values.add(0, name);
+            values.add(1, String.valueOf(hitPoints));
+            values.add(2, String.valueOf(strength));
+            values.add(3, weapon);
         }
-        System.out.println("it's "  + storageList.size());
     }
 
     @Override
     public String toString() {
         return """
                 Player{name = '%s', hitPoints = %s, strength = %s, weapon = '%s'
-                """.formatted(getName(),getHitPoints(),getStrength(),getWeapon());
+                """.formatted(getName(), getHitPoints(), getStrength(), getWeapon());
     }
 }

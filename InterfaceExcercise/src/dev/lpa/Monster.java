@@ -1,9 +1,9 @@
 package dev.lpa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Monster implements ISaveable {
-
     private String name;
     private int hitPoints;
     private int strength;
@@ -40,12 +40,24 @@ public class Monster implements ISaveable {
 
     @Override
     public List<String> write() {
-        return null;
+        List<String> storageList = new ArrayList<>();
+        storageList.add(0, this.name);
+        storageList.add(1, "" + this.hitPoints);
+        storageList.add(2, "" + this.strength);
+        return storageList;
     }
 
     @Override
     public void read(List<String> storageList) {
-
+        if (storageList.size() > 0 && storageList != null) {
+            storageList.add(toString());
+        }
     }
 
+    @Override
+    public String toString() {
+        return """
+                Player{name = '%s', hitPoints = %s, strength = %s'
+                """.formatted(getName(), getHitPoints(), getStrength());
+    }
 }
