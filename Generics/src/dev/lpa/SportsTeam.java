@@ -3,8 +3,9 @@ package dev.lpa;
 import java.util.ArrayList;
 import java.util.List;
 
-interface Player {
-}
+//interface Player {
+//    String name();
+//}
 
 public class SportsTeam {
 
