@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @param <T>. This stands to represent T either a football or baseball T
- *             by putting extends Player, it means that Teams can oly be used for things that implement the player interface
+ * param <T>. This stands to represent T either a football or baseball T
+ *             by putting extends Player, it means that Teams can only be used for things that implement the player interface
  */
 record Affiliation(String name, String type, String countryCode) {
 

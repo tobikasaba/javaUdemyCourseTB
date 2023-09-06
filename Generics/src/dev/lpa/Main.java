@@ -28,7 +28,7 @@ public class Main {
 
         /**
          * Team phillies = new Team("Philadelphia Phillie's");
-         * This is the raw use of the parametrised class. this isnt a good practice
+         * This is the raw use of the parametrised class. this isn't a good practice
          */
         Team<BaseballPlayer, Affiliation> phillies = new Team<>("Philadelphia Phillie's", philly);
         Team<BaseballPlayer, Affiliation> astros = new Team<>("Houston Astros");
