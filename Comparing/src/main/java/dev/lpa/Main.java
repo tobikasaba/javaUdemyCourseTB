@@ -1,6 +1,8 @@
-package org.example;
+package dev.lpa;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
@@ -38,39 +40,50 @@ public class Main {
         System.out.println(Arrays.toString(students));
 
         System.out.println("result = " + tobs.compareTo(new Student("TOBI")));
+
+        Comparator<Student> gpaSorter = new StudentGPAComparator();
+        Arrays.sort(students, gpaSorter.reversed());
+        System.out.print(Arrays.toString(students));
+    }
+}
+
+class StudentGPAComparator implements Comparator<Student> {
+    @Override
+    public int compare(Student o1, Student o2) {
+        return (o1.gpa + o1.name).compareTo(o2.gpa + o2.name);
     }
 }
 
 class Student implements Comparable<Student> {
-
-    private final String name;
+    private static final Random random = new Random();
+    private static int LAST_ID = 1000;
+    protected int id;
+    protected double gpa;
+    String name;
 
     public Student(String name) {
         this.name = name;
+        id = LAST_ID++;
+        gpa = random.nextDouble(1.0, 4.0);
     }
 
     @Override
     public String toString() {
-        return name;
+        return "%d - %s (%.2f)".formatted(id, name, gpa);
     }
 
     /**
      * This method takes an argument of type Object, which means it can compare the current object (of type Student) with any other object.
-     * When called, the compareTo method compares the "name" of the object calling the method to the "name" paramter passed inside the method.
-     * The difference between this and the commented compareTo method below is, this method already uses references the Student class as the type of its parameter
-     * Hence we don't need to cast the parameter to the Student class anymore.
+     * One of the differences between this and the commented compareTo method below is, this method already uses references the Student class as the type of its parameter.
+     * Hence, we don't need to cast the parameter to the Student class anymore.
      *
      * @param o the object to be compared.
      * @return comparison of the two objects
      */
     @Override
     public int compareTo(Student o) {
-        /*
-         * This line performs the actual comparison based on the name property of the Student objects. It calls the compareTo method of the String class (since name is assumed to be a String) to compare the names of the two Student objects.
-         * If the name of the current Student object is lexicographically less than other.name, it returns a negative integer.
-         * If the name of the current Student object is lexicographically greater than other.name, it returns a positive integer.
-         * If the name of both Student objects is the same, it returns 0, indicating that they are considered equal in terms of ordering.*/
-        return name.compareTo(o.name);
+        return Integer.compare(id, o.id);
+//        return Integer.valueOf(id).compareTo(Integer.valueOf(o.id));
     }
     /*
     @Override
