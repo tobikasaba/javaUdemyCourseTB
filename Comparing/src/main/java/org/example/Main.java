@@ -37,11 +37,11 @@ public class Main {
         Arrays.sort(students);
         System.out.println(Arrays.toString(students));
 
-        System.out.println("result = " + tobs.compareTo("Mary"));
+        System.out.println("result = " + tobs.compareTo(new Student("TOBI")));
     }
 }
 
-class Student implements Comparable {
+class Student implements Comparable<Student> {
 
     private final String name;
 
@@ -57,22 +57,27 @@ class Student implements Comparable {
     /**
      * This method takes an argument of type Object, which means it can compare the current object (of type Student) with any other object.
      * When called, the compareTo method compares the "name" of the object calling the method to the "name" paramter passed inside the method.
+     * The difference between this and the commented compareTo method below is, this method already uses references the Student class as the type of its parameter
+     * Hence we don't need to cast the parameter to the Student class anymore.
      *
      * @param o the object to be compared.
      * @return comparison of the two objects
      */
     @Override
-    public int compareTo(Object o) {
-        /*
-         * Here, the Object argument o is explicitly cast to a Student object, assuming that the object being compared is indeed an instance of the Student class.
-         * This is done to access the name property of the Student objects for comparison.
-         * */
-        Student other = (Student) o;
+    public int compareTo(Student o) {
         /*
          * This line performs the actual comparison based on the name property of the Student objects. It calls the compareTo method of the String class (since name is assumed to be a String) to compare the names of the two Student objects.
          * If the name of the current Student object is lexicographically less than other.name, it returns a negative integer.
          * If the name of the current Student object is lexicographically greater than other.name, it returns a positive integer.
          * If the name of both Student objects is the same, it returns 0, indicating that they are considered equal in terms of ordering.*/
-        return name.compareTo(other.name);
+        return name.compareTo(o.name);
     }
+    /*
+    @Override
+    public int compareTo(Object o) {
+         // Here, the Object argument o is explicitly cast to a Student object, assuming that the object being compared is indeed an instance of the Student class.
+         // This is done to access the name property of the Student objects for comparison.
+        Student other = (Student) o;
+        return name.compareTo(other.name);
+    }*/
 }
