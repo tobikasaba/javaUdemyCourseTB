@@ -30,7 +30,8 @@ public class Main {
         Student tobs = new Student("Tobi");
         Student[] students = {new Student("Zach"), new Student("Tim"), new Student("Ann")};
         Arrays.sort(students);
-/*       this is not going to work because the class has to be derived from comparable. Meaning it has to implement comparable,
+        /*
+        this is not going to work because the class has to be derived from comparable. Meaning it has to implement comparable,
         or an interface that extends comparable
         */
         Arrays.sort(students);
@@ -42,7 +43,7 @@ public class Main {
 
 class Student implements Comparable {
 
-    private String name;
+    private final String name;
 
     public Student(String name) {
         this.name = name;
@@ -53,9 +54,25 @@ class Student implements Comparable {
         return name;
     }
 
+    /**
+     * This method takes an argument of type Object, which means it can compare the current object (of type Student) with any other object.
+     * When called, the compareTo method compares the "name" of the object calling the method to the "name" paramter passed inside the method.
+     *
+     * @param o the object to be compared.
+     * @return comparison of the two objects
+     */
     @Override
     public int compareTo(Object o) {
+        /*
+         * Here, the Object argument o is explicitly cast to a Student object, assuming that the object being compared is indeed an instance of the Student class.
+         * This is done to access the name property of the Student objects for comparison.
+         * */
         Student other = (Student) o;
+        /*
+         * This line performs the actual comparison based on the name property of the Student objects. It calls the compareTo method of the String class (since name is assumed to be a String) to compare the names of the two Student objects.
+         * If the name of the current Student object is lexicographically less than other.name, it returns a negative integer.
+         * If the name of the current Student object is lexicographically greater than other.name, it returns a positive integer.
+         * If the name of both Student objects is the same, it returns 0, indicating that they are considered equal in terms of ordering.*/
         return name.compareTo(other.name);
     }
 }
