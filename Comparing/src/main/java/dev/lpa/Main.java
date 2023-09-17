@@ -32,11 +32,6 @@ public class Main {
         Student tobs = new Student("Tobi");
         Student[] students = {new Student("Zach"), new Student("Tim"), new Student("Ann")};
         Arrays.sort(students);
-        /*
-        this is not going to work because the class has to be derived from comparable. Meaning it has to implement comparable,
-        or an interface that extends comparable
-        */
-        Arrays.sort(students);
         System.out.println(Arrays.toString(students));
 
         System.out.println("result = " + tobs.compareTo(new Student("TOBI")));
@@ -48,6 +43,15 @@ public class Main {
 }
 
 class StudentGPAComparator implements Comparator<Student> {
+
+    /**
+     * This method, compares two Student objects (o1 and o2) based on the concatenation of their GPAs and names as strings.
+     * This effectively sorts them by GPA and, in case of a tie, by name.
+     *
+     * @param o1 the first object to be compared.
+     * @param o2 the second object to be compared.
+     * @return the sorting order
+     */
     @Override
     public int compare(Student o1, Student o2) {
         return (o1.gpa + o1.name).compareTo(o2.gpa + o2.name);
@@ -82,8 +86,8 @@ class Student implements Comparable<Student> {
      */
     @Override
     public int compareTo(Student o) {
-        return Integer.compare(id, o.id);
-//        return Integer.valueOf(id).compareTo(Integer.valueOf(o.id));
+//        return Integer.compare(id, o.id);
+        return Integer.valueOf(id).compareTo(Integer.valueOf(o.id));
     }
     /*
     @Override
