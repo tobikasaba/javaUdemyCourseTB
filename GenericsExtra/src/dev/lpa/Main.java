@@ -15,22 +15,63 @@ public class Main {
             students.add(new Student());
         }
         students.add(new LPAStudent());
-        printList(students);
+//        printList(students);
+        printMoreList(students);
 
-        List<LPAStudent> lpaStudents = new ArrayList<>();
-        for (int i = 0; i < studentCount; i++) {
-            lpaStudents.add(new LPAStudent());
-        }
-        students.add(new LPAStudent());
-
-        printList(lpaStudents);
+//        List<LPAStudent> lpaStudents = new ArrayList<>();
+//        for (int i = 0; i < studentCount; i++) {
+//            lpaStudents.add(new LPAStudent());
+//        }
+//        students.add(new LPAStudent());
+//
+////        printList(lpaStudents);
+//        printMoreList(lpaStudents);
+//
+//        testList(new ArrayList<String>(List.of("Able", "Barry","Charlie")));
+//        testList(new ArrayList<Integer>(List.of(1,2,3)));
     }
 
-    public static void printList(List students) {
+    /**
+     * This is a wildcard syntax in Java and is represented by a question mark
+     *
+     * @param students
+     */
+    public static void printMoreList(List<? extends Student> students) {
 
         for (var student : students) {
-            System.out.println(student);
+            System.out.println(student.getYearStarted() + ": " + student);
         }
         System.out.println();
     }
+
+    public static void testList(List<?> list) {
+
+        for (var element:list){
+            if (element instanceof String s) {
+                System.out.println("String: " + s.toUpperCase());
+            } else if (element instanceof Integer i) {
+                System.out.println("Integer: " + i.floatValue());
+            }
+        }
+    }
+
+//    public static void testList(List<String> list) {
+//
+//        for (var element : list){
+//            System.out.println("String: " + element.toUpperCase());
+//        }
+//    }
+//    public static void testList(List<Integer> list) {
+//
+//        for (var element : list){
+//            System.out.println("Integer: " + element.floatValue());
+//        }
+//    }
+//    public static <T extends Student> void printList(List<T> students) {
+//
+//        for (var student : students) {
+//            System.out.println(student.getYearStarted() + ": " + student);
+//        }
+//        System.out.println();
+//    }
 }
