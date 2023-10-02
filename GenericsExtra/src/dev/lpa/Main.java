@@ -29,6 +29,7 @@ public class Main {
 
         testList(new ArrayList<String>(List.of("Able", "Barry","Charlie")));
         testList(new ArrayList<Integer>(List.of(1,2,3)));
+//        testList(new ArrayList<Object>(List.of(1,"Barry",3)));
     }
 
     /**
@@ -47,9 +48,10 @@ public class Main {
     public static void testList(List<?> list) {
 
         for (var element:list){
-            if (element instanceof String s) {
-                System.out.println("String: " + s.toUpperCase());
-            } else if (element instanceof Integer i) {
+            if (element instanceof String stringElement) {
+                System.out.println("String: " + stringElement.toUpperCase());
+            } else if (element instanceof Integer) {
+                Integer i = (Integer) element;
                 System.out.println("Integer: " + i.floatValue());
             }
         }
