@@ -2,10 +2,19 @@ package dev.lpa;
 
 import dev.lpa.model.LPAStudent;
 import dev.lpa.model.Student;
+import dev.lpa.util.QueryItem;
+import dev.lpa.util.QueryList;
 
 import java.util.ArrayList;
 import java.util.List;
 
+record Employee(String name) implements QueryItem {
+
+    @Override
+    public boolean matchFieldValue(String fieldName, String value) {
+        return false;
+    }
+}
 public class Main {
     public static void main(String[] args) {
 
@@ -27,9 +36,25 @@ public class Main {
 //        printList(lpaStudents);
         printMoreList(lpaStudents);
 
-        testList(new ArrayList<String>(List.of("Able", "Barry","Charlie")));
-        testList(new ArrayList<Integer>(List.of(1,2,3)));
+        testList(new ArrayList<String>(List.of("Able", "Barry", "Charlie")));
+        testList(new ArrayList<Integer>(List.of(1, 2, 3)));
 //        testList(new ArrayList<Object>(List.of(1,"Barry",3)));
+
+        var queryList = new QueryList<>(lpaStudents);
+        var matches = queryList.getMatches(
+                "Course", "Python");
+        printMoreList(matches);
+
+        var students2021 = QueryList.getMatches(students,
+                "YearStarted", "2021");
+        printMoreList(students2021);
+
+//        var students2021 = QueryList.<Student>getMatches(new ArrayList<>(),
+//                "YearStarted", "2021");
+//        printMoreList(students2021);
+
+//        QueryList<Employee> employeeList = new QueryList<Employee>();
+
     }
 
     /**
@@ -47,7 +72,7 @@ public class Main {
 
     public static void testList(List<?> list) {
 
-        for (var element:list){
+        for (var element : list) {
             if (element instanceof String stringElement) {
                 System.out.println("String: " + stringElement.toUpperCase());
             } else if (element instanceof Integer) {
