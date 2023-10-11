@@ -2,6 +2,7 @@ package dev.lpa;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Album {
 
@@ -53,7 +54,23 @@ public class Album {
         }
         return false;
     }
-    public class SongList{
-        
+
+    public class SongList {
+
+        private List<Song> songs = new ArrayList<>();
+
+        public SongList() {
+            songs = new ArrayList<>();
+        }
+
+        private boolean add (Song newSong){
+            for (var song : songs){
+                if(song.getTitle().equals(newSong.getTitle())){
+                    return false;
+                }else {
+                    songs.add(newSong);
+                }
+            }
+        }
     }
 }
