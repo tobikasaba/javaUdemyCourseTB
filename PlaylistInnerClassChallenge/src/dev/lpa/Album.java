@@ -63,14 +63,18 @@ public class Album {
             songs = new ArrayList<>();
         }
 
-        private boolean add (Song newSong){
+        private boolean findSong (String songTitle){
             for (var song : songs){
-                if(song.getTitle().equals(newSong.getTitle())){
+                if(song.getTitle().equals(songTitle)){
                     return false;
                 }else {
                     songs.add(newSong);
+                    return true;
                 }
             }
+            return false;
         }
+
+
     }
 }
