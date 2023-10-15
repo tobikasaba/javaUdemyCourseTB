@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41aedd61-6c95-4714-80e9-417d36d99cfd" name="Changes" comment="Nested classes challenge">
+    <list default="true" id="41aedd61-6c95-4714-80e9-417d36d99cfd" name="Changes" comment="uploading xml file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PlaylistInnerClassChallenge/src/dev/lpa/Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PlaylistInnerClassChallenge/src/dev/lpa/Album.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PlaylistInnerClassChallenge/src/dev/lpa/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PlaylistInnerClassChallenge/src/dev/lpa/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
