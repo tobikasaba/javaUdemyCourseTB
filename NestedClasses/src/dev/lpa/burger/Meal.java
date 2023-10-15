@@ -90,7 +90,7 @@ public class Meal {
                 try {
                     Extra topping = Extra.valueOf(selectedTopping.toUpperCase());
                     toppings.add(new Item(topping.name(), "TOPPING", topping.getPrice()));
-                }catch(IllegalArgumentException ie) {
+                } catch (IllegalArgumentException ie) {
                     System.out.println("No topping found for " + selectedTopping);
                 }
             }
