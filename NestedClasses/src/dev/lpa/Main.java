@@ -55,6 +55,7 @@ public class Main {
 
         System.out.println("With Pig Latin Names");
         addPigLatinName(storeEmployees);
+
         /*
         Quick refresher on Comparison
         var james = new Employee(3, "James", 2004);
@@ -79,6 +80,7 @@ public class Main {
      */
     public static void addPigLatinName(List<? extends StoreEmployee> list) {
 /*
+
         last name is an effectively final variable. A local variable or a method argument are effectively final, if
         a value is assigned to them, and then never changed after that.
  */
@@ -86,7 +88,9 @@ public class Main {
 
 
         /**
+         *
          * Access modifiers can't be used with Local Classes. If you were to add a "public" access moifier, it would throw an error
+         * any class can extend a class. For example, this local class extends StoreEmployee giving it access to its methods
          */
         class DecoratedEmployee extends StoreEmployee implements Comparable<DecoratedEmployee> {
 
@@ -95,6 +99,11 @@ public class Main {
 
 
             public DecoratedEmployee(String pigLatinName, Employee originalInstance) {
+                /*
+                local variables "lastName" in a method (addPigLatinName) and method arguments  a local class belongs to can be used
+                by that local class
+
+                 */
                 this.pigLatinName = pigLatinName + " " + lastName;
                 this.originalInstance = originalInstance;
             }
@@ -119,6 +128,10 @@ public class Main {
 //        if you pass null to the sort method on a list, it uses the comparable's sort to method
         newList.sort(null);
         for (var dEmployee : newList) {
+            /*
+            a method with a local class can access of the classes fields regardless of the access modifier
+            hence why the addPigLatinName method can access originalInstance and pigLatinName
+             */
             System.out.println(dEmployee.originalInstance.getName() + " " + dEmployee.pigLatinName);
         }
     }
