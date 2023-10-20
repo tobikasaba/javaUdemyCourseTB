@@ -23,8 +23,11 @@ public class RunMethods {
                 new StoreEmployee(10322, "Bud", 2016,
                         "Target")));
 
+//      uses the top level employee comparator
         var c0 = new EmployeeComparator<StoreEmployee>();
+//      uses static nested class on employee class
         var c1 = new Employee.EmployeeComparator<StoreEmployee>();
+//       uses the inner class on store employee. This creates an instance of store employee first then uses that to create an instance of StoreComparator
         var c2 = new StoreEmployee().new StoreComparator<StoreEmployee>();
 
 //      Using local class
@@ -37,8 +40,12 @@ public class RunMethods {
         }
 
         var c3 = new NameSort<StoreEmployee>();
+/*
+    Using anonymous class
+    Comparator is an interface and can't be instantiated proof that this isn't an object but rather a class
+    It also has curly braces which is used to write class body
 
-//        Using anonymous class
+ */
         var c4 = new Comparator<StoreEmployee>() {
             @Override
             public int compare(StoreEmployee o1, StoreEmployee o2) {
