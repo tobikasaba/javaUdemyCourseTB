@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41aedd61-6c95-4714-80e9-417d36d99cfd" name="Changes" comment="second review with comments for anonymous Classes">
+      <change afterPath="$PROJECT_DIR$/../LambdaIntro/LambdaIntro.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,6 +38,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "/Users/tkasaba/bootcamp/Java/java-course/javaUdemyCourseTB/NestedClasses",
     "settings.editor.selected.configurable": "editor.preferences.import"
   }
