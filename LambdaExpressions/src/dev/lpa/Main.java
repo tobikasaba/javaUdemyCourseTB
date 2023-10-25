@@ -1,7 +1,10 @@
 package dev.lpa;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.BinaryOperator;
 
 public class Main {
     public static void main(String[] args) {
@@ -38,21 +41,25 @@ public class Main {
         var result3 = calculator((var a, var b) -> a / b, 10.0, 2.5);
         var result4 = calculator((a, b) -> a.toUpperCase() + " " + b.toUpperCase(), "Ralph", "Kramden");
 
+        var coords = Arrays.asList(
+                new double[]{47.2160, -95.2348},
+                new double[]{29.1566, -89.2495},
+                new double[]{35.1556, -90.0659});
+
+        coords.forEach(s -> System.out.println(Arrays.toString(s)));
+
+        BiConsumer<Double, Double> p1 = (lat, lng) -> System.out.printf("[lat:%.3f lon:%3f]%n", lat, lng);
     }
 
-    /**
-     * This calculator method is used to perform different operations on different types of data.
-     *
-     * @param function
-     * @param value1
-     * @param value2
-     * @param <T>
-     * @return
-     */
-    public static <T> T calculator(Operation<T> function, T value1, T value2) {
 
-        T result = function.operate(value1, value2);
+    public static <T> T calculator(BinaryOperator<T> function, T value1, T value2) {
+
+        T result = function.apply(value1, value2);
         System.out.println("Result of operation: " + result);
         return result;
+    }
+
+    public static <T> void processPoint(T t1, T t2, BiConsumer<T, T> consumer) {
+        consumer.accept(t1, t2);
     }
 }
