@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
 
 public class Main {
     public static void main(String[] args) {
@@ -33,7 +34,7 @@ public class Main {
 
         printWordsForEach.accept("Hello how are you doing today");
 
-//        you dont need curly braces for a single line lambda
+//        you don't need curly braces for a single line lambda
         Consumer<String> printWordsConcise = sentence -> Arrays.asList(sentence.split(" ")).forEach(s -> System.out.println(s));
         System.out.println("---------");
         printWordsConcise.accept("Hello how are you doing today");
@@ -42,6 +43,24 @@ public class Main {
         System.out.println(everySecondChar("What is it"));
 
 
+        UnaryOperator<String> everySecondChar = source -> {
+            StringBuilder returnVal = new StringBuilder();
+            for (int i = 0; i < source.length(); i++) {
+                if (i % 2 == 1) {
+                    returnVal.append(source.charAt(i));
+                }
+            }
+            return returnVal.toString();
+        };
+
+        System.out.println("---------");
+        System.out.println(everySecondChar.apply("1234567890"));
+
+        System.out.println("""
+                ---------
+                Passing lambda expressions in a method
+                """);
+        System.out.println(everySecondCharacter(everySecondChar, "1234567890"));
     }
 
     public static String everySecondChar(String source) {
@@ -55,6 +74,8 @@ public class Main {
         return returnVal.toString();
 
     }
+
+    public static String everySecondCharacter (UnaryOperator<String> func, String source){
+        return func.apply(source);
+    }
 }
-
-
