@@ -75,7 +75,7 @@ public class Main {
 
     }
 
-    public static String everySecondCharacter (UnaryOperator<String> func, String source){
+    public static String everySecondCharacter(UnaryOperator<String> func, String source) {
         return func.apply(source);
     }
 }
