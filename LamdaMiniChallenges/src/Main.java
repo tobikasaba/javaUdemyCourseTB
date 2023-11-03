@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 public class Main {
@@ -61,6 +62,24 @@ public class Main {
                 Passing lambda expressions in a method
                 """);
         System.out.println(everySecondCharacter(everySecondChar, "1234567890"));
+
+
+//        mini challenge 6
+        Supplier<String> lovingJava = () -> {
+            String iLoveJava = new String("I love Java");
+            return iLoveJava;
+        };
+
+        Supplier<String> lovingJava2 = () -> {
+            return new String("I love Java");
+        };
+
+        Supplier<String> lovingJava3 = () -> "I love Java";
+
+        System.out.println("---------");
+//        mini challenge 7
+        var supplierResult = lovingJava3.get();
+        System.out.println(supplierResult);
     }
 
     public static String everySecondChar(String source) {
