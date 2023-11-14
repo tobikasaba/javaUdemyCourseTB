@@ -27,6 +27,7 @@ public class Main {
         calculator(Integer::sum, 10, 25);
         calculator(Double::sum, 2.5, 7.5);
 
+
         /*
          * creating a variable using lambda expressions does not execute it.
          * To do so, execute the functional method on the variable or pass the variable
@@ -53,6 +54,7 @@ public class Main {
         System.out.println(b2.apply("Hello ", "World"));
         System.out.println(u1.apply("Hello "));
 
+        System.out.println("-------");
         String result = "Hello".transform(u1);
         System.out.println("Result = " + result);
 
