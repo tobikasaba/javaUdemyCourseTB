@@ -88,12 +88,9 @@ public class Main {
         list.sort(Comparator.comparing(Person::lastName));
         list.forEach(System.out::println);
 
-
         System.out.println("---------------------");
         list.sort(Comparator.comparing(Person::lastName)
                 .thenComparing(Person::firstName).reversed());
         list.forEach(System.out::println);
-
-
     }
 }
