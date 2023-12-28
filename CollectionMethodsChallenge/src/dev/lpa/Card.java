@@ -1,19 +1,18 @@
+package dev.lpa;
+
+import dev.lpa.Suit;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public record Card(Suit suit, String face, int rank) {
 
-    public enum Suit {
-        CLUB, DIAMOND, HEART, SPADE;
-
-        public char getImage() {
-            return (new char[]{9827, 9830, 9829, 9824})[this.ordinal()];
-        }
+    public static Comparator<Card> sortRankReversedSuit(){
+        return Comparator.comparing(Card::rank).reversed().thenComparing(Card::suit);
     }
-
     @Override
     public String toString() {
-
         int index = face.equals("10") ? 2 : 1;
         String faceString = face.substring(0, index);
         return "%s%c(%d)".formatted(faceString, suit.getImage(), rank);
@@ -24,7 +23,7 @@ public record Card(Suit suit, String face, int rank) {
         if (cardNumber > 1 && cardNumber < 11) {
             return new Card(suit, String.valueOf(cardNumber), cardNumber - 2);
         }
-        System.out.println("Invalid Numeric card selected");
+        System.out.println("Invalide Numeric card Selected");
         return null;
     }
 
@@ -70,5 +69,6 @@ public record Card(Suit suit, String face, int rank) {
             System.out.println();
         }
     }
+
 
 }

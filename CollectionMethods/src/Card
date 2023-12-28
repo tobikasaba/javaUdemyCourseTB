@@ -1,4 +1,4 @@
-public record Card(Suit suit, String face, int rank) {
+public record dev.lpa.Card(dev.lpa.Suit suit, String face, int rank) {
 
     @Override
     public String toString() {
@@ -7,10 +7,10 @@ public record Card(Suit suit, String face, int rank) {
         return "%s%c(%d)".formatted(faceString, suit.getImage(), rank);
     }
 
-    public static Card getNumericCard(Suit suit, int cardNumber) {
+    public static dev.lpa.Card getNumericCard(dev.lpa.Suit suit, int cardNumber) {
 
         if (cardNumber > 1 && cardNumber < 11) {
-            return new Card(suit, String.valueOf(cardNumber), cardNumber - 2);
+            return new dev.lpa.Card(suit, String.valueOf(cardNumber), cardNumber - 2);
         }
     }
 }

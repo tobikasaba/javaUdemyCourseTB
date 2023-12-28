@@ -1,11 +1,12 @@
-import java.sql.SQLOutput;
+package dev.lpa;
+
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
-//        List<Card> deck = Card.getStandardDeck();
-//        Card.printDeck(deck);
+//        List<dev.lpa.Card> deck = dev.lpa.Card.getStandardDeck();
+//        dev.lpa.Card.printDeck(deck);
 
         Card[] cardArray = new Card[13];
         Card aceOfHearts = Card.getFaceCard(Card.Suit.HEART, 'A');
@@ -31,10 +32,10 @@ public class Main {
 
         Collections.addAll(cards, cardArray);
         Collections.addAll(cards, cardArray);
-        Card.printDeck(cards, "Card Collection with Aces added", 2);
+        Card.printDeck(cards, "dev.lpa.Card Collection with Aces added", 2);
 
         Collections.copy(cards, kingsOfClubs);
-        Card.printDeck(cards, "Card Collection with Kings copied", 1);
+        Card.printDeck(cards, "dev.lpa.Card Collection with Kings copied", 1);
 
 //        this method returns a copy of the list but this is immutable (unmodifiable)
         cards = List.copyOf(kingsOfClubs);
@@ -99,13 +100,13 @@ public class Main {
         System.out.println("Ten of Clubs Cards = " +
                 Collections.frequency(deck, tenOfClubs));
 
-        System.out.println("Best Card = " + Collections.max(deck, sortingAlgorithm));
-        System.out.println("Worst Card = " + Collections.min(deck, sortingAlgorithm));
+        System.out.println("Best dev.lpa.Card = " + Collections.max(deck, sortingAlgorithm));
+        System.out.println("Worst dev.lpa.Card = " + Collections.min(deck, sortingAlgorithm));
 
         var sortBySuit = Comparator.comparing(Card::suit).
                 thenComparing(Card::rank);
         deck.sort(sortBySuit);
-        Card.printDeck(deck, "Sorted by Suit, Rank", 4);
+        Card.printDeck(deck, "Sorted by dev.lpa.Suit, Rank", 4);
 
         List<Card> copied = new ArrayList<>(deck.subList(0, 13));
         Collections.rotate(copied, 2);

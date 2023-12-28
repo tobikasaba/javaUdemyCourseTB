@@ -1,3 +1,5 @@
+package dev.lpa;
+
 public class CardClass {
 
     private Suit suit;
