@@ -24,6 +24,46 @@ public class Main {
         robinHood.addEmail("Sherwood Forest");
         robinHood.replaceEmailIfExists("Rd@sherwoodforest.com", "Rd@sherwoodforest.org");
         System.out.println(robinHood);
+
+        /*
+        combines the email list and the phone list excluding all duplicates
+         */
+        Set<Contact> unionAB = new HashSet<>();
+        unionAB.addAll(emailContacts);
+        unionAB.addAll(phoneContacts);
+        printData("(A ∪ B) Union of emails (A) with phones (B)", unionAB);
+
+        /*
+        includes the elements that are present in both the email and phones list
+        the email list takes presence since the hashset was created using it
+        */
+        Set<Contact> intersectAB = new HashSet<>(emailContacts);
+        intersectAB.retainAll(phoneContacts);
+        printData("(A ∩ B) Intersect emails (A) with phones (B)", intersectAB);
+
+        /*
+        this includes the elements that are in the email list that aren't in the phones list
+        the email list takes presence since the hashset was created using it
+        */
+        Set<Contact> AMinusB = new HashSet<>(emailContacts);
+        AMinusB.removeAll(phoneContacts);
+        printData("(A - B) emails (A) - phones (B)", AMinusB);
+
+        Set<Contact> BMinusA = new HashSet<>(emailContacts);
+        AMinusB.removeAll(phoneContacts);
+        printData("(B - A) phones (B) - emails (A)", BMinusA);
+
+        /*
+        Set symmetric difference are all elements that don't intersect
+         */
+        Set<Contact> symmetricDiff = new HashSet<>(AMinusB);
+        symmetricDiff.addAll(BMinusA);
+        printData("Symmetric Difference: phones and emails", symmetricDiff);
+
+
+        Set<Contact> symmetricDiff2 = new HashSet<>(unionAB);
+        symmetricDiff2.removeAll(intersectAB);
+        printData("Symmetric Difference: phones and emails", symmetricDiff2);
     }
 
     public static void printData(String header, Collection<Contact> contacts) {
