@@ -6,7 +6,6 @@ enum Priority {HIGH, LOW, MEDIUM}
 
 public class Task implements Comparable<Task> {
 
-
     private String assignee;
     private String project;
     private String description;
