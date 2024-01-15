@@ -2,8 +2,11 @@ package dev.lpa;
 
 import jdk.jshell.spi.SPIResolutionException;
 
+import java.awt.*;
+import java.security.spec.RSAOtherPrimeInfo;
 import java.sql.SQLOutput;
 import java.util.*;
+import java.util.List;
 
 public class TreeSetMain {
 
@@ -58,10 +61,69 @@ public class TreeSetMain {
 
 
         NavigableSet<Contact> copiedSet = new TreeSet<>(fullSet);
+//        pollFirst returns and removes the head (first element) of the list while pollLast does the same to the last
         System.out.println("First element = " + copiedSet.pollFirst());
         System.out.println("Last element = " + copiedSet.pollLast());
         copiedSet.forEach((System.out::println));
         System.out.println("--------------------------------------");
+
+        Contact daffy = new Contact("Daffy Duck");
+        Contact daisy = new Contact("Daisy Duck");
+        Contact snoopy = new Contact("Snoopy");
+        Contact archie = new Contact("Archie");
+        /*
+       ceiling returns the element, that is either greater than or equal to the element passed.
+       the higher method never returns the value that's equal to it in a set, it always returns the next greater element
+         */
+        System.out.println("Ceiling and Higher");
+        System.out.println("--------------------------");
+        for (Contact c : List.of(daffy, daisy, last, snoopy)) {
+            System.out.printf("ceiling (%s) = %s%n", c.getName(), fullSet.ceiling(c));
+            System.out.printf("higher (%s) = %s%n", c.getName(), fullSet.higher(c));
+        }
+        System.out.println("--------------------------");
+
+        /*
+       flooring returns the element, that is either less than or equal to the element passed.
+       the lower method never returns the value that's equal to it in a set, it always returns the next lesser element
+         */
+        System.out.println("Flooring and Lower");
+        System.out.println("--------------------------");
+        for (Contact c : List.of(daffy, daisy, first, archie)) {
+            System.out.printf("floor (%s) = %s%n", c.getName(), fullSet.floor(c));
+            System.out.printf("lower (%s) = %s%n", c.getName(), fullSet.lower(c));
+        }
+        System.out.println("---------------------------");
+
+//        whatever is done to a descendingSet, the same happens to the Set that backs it i.e, fullSet
+        NavigableSet<Contact> descendingSet = fullSet.descendingSet();
+        descendingSet.forEach(System.out::println);
+        System.out.println("---------------------------");
+
+        Contact lastContact = descendingSet.pollLast();
+        System.out.println("Removed " + lastContact);
+        descendingSet.forEach(System.out::println);
+        System.out.println("---------------------------");
+        fullSet.forEach(System.out::println);
+        System.out.println("---------------------------");
+
+        /*
+        the headSet method returns all the elements greater than the element it is being compared to excluding the element itself
+        the tailSet element does the opposite and includes the element passed.
+        By overloading the method, with true and false you are making the headSet include the element and the tailSet to exclude the element
+         */
+        Contact marion = new Contact("Maid Marion");
+        var headSet = fullSet.headSet(marion, true);
+        headSet.forEach(System.out::println);
+        System.out.println("---------------------------");
+
+        var tailSet = fullSet.tailSet(marion, false);
+        tailSet.forEach(System.out::println);
+        System.out.println("---------------------------");
+
+        Contact linus = new Contact("Linus Van Pelt");
+        var subSet = fullSet.subSet(linus, true, marion, true);
+        subSet.forEach(System.out::println);
     }
 }
 
