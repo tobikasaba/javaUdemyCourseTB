@@ -4,19 +4,18 @@ import java.util.TreeSet;
 
 public class Theatre {
 
-    enum Reservation {YES, NO}
+
     private String theatreName;
     private int seatsInRow;
     private TreeSet<Seat> seat;
 
-    public Theatre(String theatreName, int seatsInRow, int numberOfRows) {
+    public Theatre(String theatreName, int numberOfRows, int totalNumberOfSeats) {
         this.theatreName = theatreName;
-        this.seatsInRow = seatsInRow;
-        int totalSeats = numberOfRows * seatsInRow;
+        this.seatsInRow = totalNumberOfSeats / numberOfRows;
     }
 
-    public static void printSeatMap(TreeSet<Seat> seats){
-        for (var seat: seats){
+    public static void printSeatMap(TreeSet<Seat> seats) {
+        for (var seat : seats) {
             System.out.println(seat);
         }
     }
@@ -24,9 +23,8 @@ public class Theatre {
     public class Seat {
 
         private String row;
-        //        private int number;
         private String seatNumber;
-        private Reservation reserved;
+        private boolean reserved;
 
         public Seat(String row, int number) {
             this.row = row;

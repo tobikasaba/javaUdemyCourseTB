@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41aedd61-6c95-4714-80e9-417d36d99cfd" name="Changes" comment="second review with comments for anonymous Classes">
-      <change afterPath="$PROJECT_DIR$/../TreeSetChallenge/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../TreeSetChallenge/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../TreeSetChallenge/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../TreeSetChallenge/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../TreeSetChallenge/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../TreeSetChallenge/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../TreeSetChallenge/TreeSetChallenge.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../TreeSetChallenge/src/dev/lpa/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../TreeSetChallenge/src/dev/lpa/Theatre.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TreeSetChallenge/src/dev/lpa/Theatre.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TreeSetChallenge/src/dev/lpa/Theatre.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
