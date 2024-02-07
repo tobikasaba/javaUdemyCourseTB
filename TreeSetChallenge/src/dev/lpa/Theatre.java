@@ -1,26 +1,11 @@
 package dev.lpa;
 
+import java.util.NavigableSet;
 import java.util.TreeSet;
 
 public class Theatre {
 
-
-    private String theatreName;
-    private int seatsInRow;
-    private TreeSet<Seat> seat;
-
-    public Theatre(String theatreName, int numberOfRows, int totalNumberOfSeats) {
-        this.theatreName = theatreName;
-        this.seatsInRow = totalNumberOfSeats / numberOfRows;
-    }
-
-    public static void printSeatMap(TreeSet<Seat> seats) {
-        for (var seat : seats) {
-            System.out.println(seat);
-        }
-    }
-
-    public class Seat {
+    class Seat implements Comparable<Seat> {
 
         private String row;
         private String seatNumber;
@@ -40,8 +25,30 @@ public class Theatre {
 
         @Override
         public String toString() {
-            return "Your Seat Number is: " + this.row.toUpperCase() + this.seatNumber + " this seat is " + reserved;
+            return this.seatNumber;
+        }
+
+        @Override
+        public int compareTo(Seat o) {
+            return seatNumber.compareTo(o.seatNumber);
         }
     }
+
+    private String theatreName;
+    private int seatsInRow;
+    private NavigableSet<Seat> seats;
+
+    public Theatre(String theatreName, int numberOfRows, int totalNumberOfSeats) {
+        this.theatreName = theatreName;
+        this.seatsInRow = totalNumberOfSeats / numberOfRows;
+    }
+
+    public static void printSeatMap(TreeSet<Seat> seats) {
+        for (var seat : seats) {
+            System.out.println(seat);
+        }
+    }
+
+
 }
 
